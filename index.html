@@ -1,0 +1,106 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+  <script type="text/javascript" src="lib/url-template/url-template.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+  <script type="text/javascript" src="apigClient.js"></script>
+<title>ECV Serverless Bootcamp</title> 
+<style>
+.center {
+    margin: auto;
+    width: 80%;
+    height: 10%;
+    border: 5px solid #FF8800;
+    padding: 4px;
+    color: #FFFFFF;
+    background-color: #FF8800;
+}
+.table {
+    margin: auto;
+}
+</style>
+</head>
+  <div style="text-align:center;">
+  <div class="center">
+  <p><h1>Welcome ECV Serverless Bootcamp</p></h1>
+</div>
+<div id="json"></div>
+<section>
+      <h2>Items in DynamoDB</h2>
+      <form id="Items">
+      <button id="get_items" type="button">View Items</button>
+      <table id="items_list">
+        <thead>
+        </thead>
+      </table>
+      </form>
+    </section>
+<div id="post"></div>
+
+<script>
+  
+function getItemsList(){
+   
+    var apigClient = apigClientFactory.newClient();
+    var params = {
+    };
+//    console.log(params);
+    var body = {
+    };
+    var additionalParams = {
+        headers: {
+        },
+        queryParams: {
+        }
+    };
+    
+    apigClient.getItemsGet(params, body, additionalParams)
+        .then(function(result){
+            var txt = '';
+//            myObj = JSON.parse(this.responseText);
+            txt += "<table border='1'>"
+            txt += "<tr>";
+            txt += "<td>" + "id" + "</td>";
+            txt += "<td>" + "season" + "</td>";
+            txt += "<td>" + "weather" + "</td>";
+            txt += "<td>" + "weekday" + "</td>";
+            txt += "<td>" + "workingday" + "</td>";
+            txt += "<td>" + "month" + "</td>";
+            txt += "<td>" + "count" + "</td>";
+            txt += "</tr>";
+            for (x in result.data) {
+              console.log(result.data[x]);
+              txt += "<tr>";
+              txt += "<td>" + result.data[x].id.N + "</td>";
+              txt += "<td>" + result.data[x].season.S + "</td>";
+              txt += "<td>" + result.data[x].weather.S + "</td>";
+              txt += "<td>" + result.data[x].weekday.S + "</td>";
+              txt += "<td>" + result.data[x].workingday.BOOL + "</td>";
+              txt += "<td>" + result.data[x].month.N + "</td>";
+              txt += "<td>" + result.data[x].count.N + "</td>";
+              txt += "</tr>";
+            }
+            txt += "</table>"
+            document.getElementById("items_list").innerHTML = txt;
+            return result;
+        }).catch( function(result){
+            console.log(result);
+        });
+}
+
+$("#get_items").click(function() {
+  console.log(this.id);;
+  getItemsList();
+});
+
+</script>
+</html>
