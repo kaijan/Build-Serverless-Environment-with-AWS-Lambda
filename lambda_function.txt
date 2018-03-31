@@ -1,0 +1,20 @@
+import boto3
+
+def lambda_handler(event, context):
+    
+    print ("====================Lambda Start====================")
+    
+    client_dynamodb = boto3.client('dynamodb')
+    
+    response_dynamodb = client_dynamodb.scan(
+        TableName = 'serverless_demo'
+        )['Items']
+    
+    print (response_dynamodb)
+        
+    response_dynamodb_sorted = sorted(response_dynamodb, key= lambda response: response['id']['N'], reverse=False)
+    
+    print (response_dynamodb_sorted)
+    
+    return (response_dynamodb_sorted)
+    
