@@ -63,8 +63,7 @@ function getItemsList(){
         }
     };
     
-    apigClient.getItemsGet(params, body, additionalParams)
-        .then(function(result){
+    apigClient.getItemsGet(params, body, additionalParams).then(function(result){
             var txt = '';
 //            myObj = JSON.parse(this.responseText);
             txt += "<table border='1'>"
