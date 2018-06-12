@@ -10,6 +10,8 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 ## Prerequisites
 >The workshop’s region will be in ‘N.Virginia’
 
+> Download index.html which is in this repository
+
 
 ## Lab tutorial
 ### Create S3 bucket
