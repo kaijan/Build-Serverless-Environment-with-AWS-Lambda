@@ -108,7 +108,9 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 6.2. Select **Create item**.
 
-6.3. In the prompt console, type data type & data value which you want.
+6.3. In the prompt console, type data type & data value like below.
+
+![13.png](/images/13.png)
 
 6.4. Click **Save**.
 
@@ -246,9 +248,7 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 9.7. Upload those files to the S3 Bucket created in Chapter S3, must to be the same layer as the html.
 
-9.8. Modify the javascript in the html file to your APIs & data in DynamoDB
-
-9.9. Reload the web page and click button to test your API.
+9.8. Reload the web page and click button to test your API.
 
 ![12.png](/images/12.png)
 ## Conclusion
