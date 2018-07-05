@@ -199,10 +199,10 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 8.5. In the **Resources** tab, choose the root **/**, click **Actions** and select **Create Resource**.
 
-8.6. Type a name in the **Resource Name**, for example: **get-items**.
+8.6. Type **get-items** in the **Resource Name**.
 
 8.7. Make sure **Enable API Gateway CORS** is enabled, then click **Create Resource**
-
+> Modify the Javascript in the html file to your APIs & data in DynamoDB
 ![9.png](/images/9.png)
 
 8.8. After resource being created, click **Actions** and select **Create Method** to add method
