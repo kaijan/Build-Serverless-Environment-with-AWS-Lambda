@@ -201,8 +201,6 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 8.6. Type **get-items** in the **Resource Name**.
 
-> Modify the Javascript in the html file to your APIs & data in DynamoDB
-
 8.7. Make sure **Enable API Gateway CORS** is enabled, then click **Create Resource**
 
 ![9.png](/images/9.png)
@@ -249,6 +247,8 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 ![11.png](/images/11.png)
 
 9.7. Upload those files to the S3 Bucket created in Chapter S3, must to be the same layer as the html.
+
+> Modify the Javascript in the html file to your APIs & data in DynamoDB
 
 9.8. Reload the web page and click button to test your API.
 
