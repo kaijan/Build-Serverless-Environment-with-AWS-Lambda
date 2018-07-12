@@ -19,11 +19,11 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 1.2. Click **Create Bucket**.
 
-1.3. For Bucket Name, type **Unique Name**
+1.3. For Bucket Name, type **Unique Name**.
 
 1.4. For Region, choose **US East(N.Virginia)**.
 
-1.5. Click **Create** to create S3 bucket without any setting
+1.5. Click **Create** to create S3 bucket without any setting.
 
 ### Upload files to S3 Bucket
 
@@ -35,7 +35,7 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 2.4. Select the html file which in the download folder, then choose.
 
-2.5. Click **Upload** without any setting
+2.5. Click **Upload** without any setting.
 
 2.6. Check the status of the object which exists in S3 bucket.
 
