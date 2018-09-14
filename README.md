@@ -3,7 +3,7 @@
 
 
 ## Scenario
-First, you will hosting a static website in S3. You will use DyanmoDB as a database which will record the data. All we need to do is retrieve the data from DynamoDB and show the record in S3 web page.
+First, you will host a static website in S3. You will use DyanmoDB as a database which will record the data. All we need to do is retrieve the data from DynamoDB and show the record in S3 web page.
 
 ![1.png](/images/1.png)
 
@@ -53,23 +53,23 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 ![3.png](/images/3.png)
 
-3.5. Verify status of **Bucket hosting**.
+3.5. Verify the status of **Bucket hosting**.
 
 3.6. Choose **Bucket Policy** tab in **Permissions**.
 
-3.7. Copy below bucket policy, and paste it to the field. Then click **Save**.
+3.7. Copy below bucket policy, and paste it into the field. Then click **Save**.
 
-	{
-  		"Version":"2012-10-17",
-  		"Statement":[{
-			"Sid":"PublicReadGetObject",
-        	"Effect":"Allow",
-			"Principal": "*",
-      		"Action":["s3:GetObject"],
-      		"Resource":["arn:aws:s3:::<Your-bucket-name>/*"]
-      		}
-  		]
-	}
+    {
+          "Version":"2012-10-17",
+          "Statement":[{
+            "Sid":"PublicReadGetObject",
+            "Effect":"Allow",
+            "Principal": "*",
+              "Action":["s3:GetObject"],
+              "Resource":["arn:aws:s3:::<Your-bucket-name>/*"]
+              }
+          ]
+    }
 
 ![4.png](/images/4.png)
 
@@ -100,7 +100,7 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 ![6.png](/images/6.png)
 
-5.5. Waiting for the table create successful.
+5.5. Waiting for the table created successfully.
 
 ### Create Items in DynamoDB Table
 
@@ -135,51 +135,51 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 7.5. Click **View Policy Document**, click **Edit**, then click **Ok**.
 
-7.6. Copy below policy and paste it to section.
+7.6. Copy below policy and paste it into the section.
 
-	{
-  		"Version": "2012-10-17",
-  		"Statement": [
-    		{
-      			"Effect": "Allow",
-      			"Action": [
-        			"logs:CreateLogGroup",
-        			"logs:CreateLogStream",
-        			"logs:PutLogEvents"
-      			],
-      			"Resource": "arn:aws:logs:*:*:*"
-    		},
-    		{
-       			"Effect": "Allow",
-       			"Action": "dynamodb:*",
-       			"Resource": "*"
-        	}
-    	]
-	}
+    {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogGroup",
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": "arn:aws:logs:*:*:*"
+            },
+            {
+                   "Effect": "Allow",
+                   "Action": "dynamodb:*",
+                   "Resource": "*"
+            }
+        ]
+    }
 
 7.7. Click **Create function**.
 
-7.8. Copy below code and paste it into **Lambda function code** section,.
+7.8. Copy below code and paste it into **Lambda function code** section.
 
-	import boto3
+    import boto3
 
-	def lambda_handler(event, context):
+    def lambda_handler(event, context):
     
-    	print ("====================Lambda Start====================")
+        print ("====================Lambda Start====================")
     
-    	client_dynamodb = boto3.client('dynamodb')
+        client_dynamodb = boto3.client('dynamodb')
     
-    	response_dynamodb = client_dynamodb.scan(
-        	TableName = '<Your_table_name>'
-        	)['Items']
+        response_dynamodb = client_dynamodb.scan(
+            TableName = '<Your_table_name>'
+            )['Items']
     
-    	print (response_dynamodb)
+        print (response_dynamodb)
         
-    	response_dynamodb_sorted = sorted(response_dynamodb, key= lambda response: response['id']['N'], reverse=False)
+        response_dynamodb_sorted = sorted(response_dynamodb, key= lambda response: response['id']['N'], reverse=False)
     
-    	print (response_dynamodb_sorted)
+        print (response_dynamodb_sorted)
     
-    	return (response_dynamodb_sorted)
+        return (response_dynamodb_sorted)
     
 7.9. Modify the **TableName** which you create previously in DynamoDB in the code.
 
@@ -223,7 +223,7 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 8.14. Review and click **Yes, replace existing values**
 
-8.15. Waiting the steps all be checked
+8.15. Waiting for the steps all be checked
 
 ![10.png](/images/10.png)
 
@@ -246,11 +246,11 @@ First, you will hosting a static website in S3. You will use DyanmoDB as a datab
 
 ![11.png](/images/11.png)
 
-9.7. Upload those files to the S3 Bucket created in Chapter S3, must to be the same layer as the html.
+9.7. Upload those files to the S3 Bucket created in Chapter S3, must be the same layer as the html.
 
 > Modify the Javascript in the html file to your APIs & data in DynamoDB
 
-9.8. Reload the web page and click button to test your API.
+9.8. Reload the web page and click the button to test your API.
 
 ![12.png](/images/12.png)
 ## Conclusion
@@ -259,7 +259,7 @@ Congratulations! You now have learned how to:
 * Create a static website hosting through S3
 * Create a Lambda function
 * Create DynamoDB Table
-* Create API though API Gateway
+* Create API through API Gateway
 
 
 
