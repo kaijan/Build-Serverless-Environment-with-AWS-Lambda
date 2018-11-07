@@ -157,9 +157,11 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
         ]
     }
 
-7.7. Click **Create function**.
+7.7. Click **Allow**.
 
-7.8. Copy below code and paste it into **Lambda function code** section.
+7.8. Click **Create function**.
+
+7.9. Copy below code and paste it into **Lambda function code** section.
 
     import boto3
 
@@ -181,9 +183,9 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
     
         return (response_dynamodb_sorted)
     
-7.9. Modify the **TableName** which you create previously in DynamoDB in the code.
+7.10. Modify the **TableName** which you create previously in DynamoDB in the code.
 
-7.10. Click **Save**.
+7.11. Click **Save**.
 
 ### Create APIs in API Gateway
 
