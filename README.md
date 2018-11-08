@@ -254,7 +254,7 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 > Make sure you have created the item (data) in DynamoDB correctly in step 6.3.
 
-![13.png](/images/13.png)
+![14.png](/images/14.png)
 
 9.8. Reload the web page and click the button to test your API.
 
