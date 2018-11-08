@@ -19,11 +19,11 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 1.2. Click **Create Bucket**.
 
-1.3. For Bucket Name, type **Unique Name**.
+1.3. For Bucket Name, type a **Unique Name**.
 
 1.4. For Region, choose **US East(N.Virginia)**.
 
-1.5. Click **Create** to create S3 bucket without any setting.
+1.5. Click **Create** button on lower left side to create S3 bucket without any setting.
 
 ### Upload files to S3 Bucket
 
@@ -31,11 +31,11 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 2.2. Click **Upload**.
 
-2.3. Click **Add files**.
+2.3. Download the **index.html** file in this Github repository first then click **Add files**.
 
-2.4. Select the html file which in the download folder, then choose.
+2.4. Select and add the index.html file which you downloaded.
 
-2.5. Click **Upload** without any setting.
+2.5. Click **Upload** button on lower left side without any setting.
 
 2.6. Check the status of the object which exists in S3 bucket.
 
@@ -45,7 +45,7 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 3.1. Select **Properties** tab.
 
-3.2. Select **Static website hosting**.
+3.2. Click **Static website hosting**.
 
 3.3. Select **Use this bucket to host a website**.
 
@@ -55,9 +55,9 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 3.5. Verify the status of **Bucket hosting**.
 
-3.6. Choose **Bucket Policy** tab in **Permissions**.
+3.6. Choose **Bucket Policy** tab in **Permissions** tab.
 
-3.7. Copy below bucket policy, and paste it into the field. Then click **Save**.
+3.7. Copy below bucket policy, and paste it into the field. Make sure you have replaced **`<Your-bucket-name>`** with the bucket name then click **Save**.
 
     {
           "Version":"2012-10-17",
@@ -78,7 +78,7 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 4.1. Click **Properties**, then click **Static website hosting**.
 
-4.2. Click the **Endpoint**.
+4.2. Click the **Endpoint** on the top of window.
 
 4.3. You will see the website as below:
 
@@ -90,9 +90,9 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 5.2. Click **Create table** in the welcome page.
 
-5.3.In the **Create DynamoDB table** section, do the following as below:
+5.3.In the **Create DynamoDB table** section, follow the setting below:
 
-* **Table name** : <YOUR_TABLE_NAME>
+* Table name : **<YOUR_TABLE_NAME>**
 * Primary key : **id** 
 * Data type : **Number**
 
@@ -108,7 +108,9 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 6.2. Select **Create item**.
 
-6.3. In the prompt console, type data type & data value like below.
+6.3. In the prompt console, type data type & data value like below. 
+
+> Make sure the data type and data value are the same as below, otherwise, it will affect the demonstration result in this tutorial.
 
 ![13.png](/images/13.png)
 
@@ -122,7 +124,7 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 7.1. In the **service menu**, select **Lambda**
 
-7.2. Select **Create a function** on the right panel.
+7.2. Select **Create function** on the right panel.
 
 7.3. Select **Author from scratch** for a blank function
 
@@ -183,7 +185,7 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
     
         return (response_dynamodb_sorted)
     
-7.10. Modify the **TableName** which you create previously in DynamoDB in the code.
+7.10. Modify the **TableName** in the code as the table name which you created previously in DynamoDB.
 
 7.11. Click **Save**.
 
@@ -191,11 +193,11 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 8.1. On the **service menu**, click **API Gateway**.
 
-8.2. Click **Create API**.
+8.2. Click **Get Started** or **Create API**.
 
 8.3. Select **New API**.
 
-8.4. Type-in API name in **Serverless-bootcamp**, then click **Create API**.
+8.4. Type-in API name with **Serverless-bootcamp**, then click **Create API**.
 
 ![8.png](/images/8.png)
 
@@ -214,14 +216,14 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 8.10. In the setup page as below:
 * Select **Lambda Function** for **Integration type**
 * Choose **us-east-1** in the **Lambda Region**
-* Type-in the Lambda function created in previous chapter in the **Lambda Function**
+* Type-in the Lambda function **serverless-function** created in previous chapter in the **Lambda Function**
 * Click **Save**
 
-8.11. Click **OK** to give API Gateway permission to invoke Lambda function
+8.11. Click **OK** to give API Gateway permission to invoke Lambda function.
 
 8.12. Click **Actions** within Resource layer, and select **Enable CORS**
 
-8.13. Select **Enable CORS and replace existing CORS headers**
+8.13. Click **Enable CORS and replace existing CORS headers**
 
 8.14. Review and click **Yes, replace existing values**
 
@@ -248,9 +250,11 @@ First, you will host a static website in S3. You will use DyanmoDB as a database
 
 ![11.png](/images/11.png)
 
-9.7. Upload those files to the S3 Bucket created in Chapter S3, must be the same layer as the html.
+9.7. Back to the S3 bucket you created in previous section and upload these files by dragging them into the upload window. These files must be on the same layer of index.html file. It should be like as below:
 
-> Modify the Javascript in the html file to your APIs & data in DynamoDB
+> Make sure you have created the item (data) in DynamoDB correctly in step 6.3.
+
+![13.png](/images/13.png)
 
 9.8. Reload the web page and click the button to test your API.
 
